@@ -21,13 +21,13 @@ var colors = ["#95f442", "#eef442", "#f4ce42", "#e09533", "#e06d33", "red"];
 function selectFillColor(magnitude) {
   if (parseFloat(magnitude) <= parseFloat(1)) {
     return colors[0];
-  } else if (parseFloat(magnitude) <= parseFloat(2)) {
+  } else if (parseFloat(magnitude) > parseFloat(1) && parseFloat(magnitude) <= parseFloat(2)) {
     return colors[1];
-  } else if (parseFloat(magnitude) <= parseFloat(3)) {
+  } else if (parseFloat(magnitude) > parseFloat(2) && parseFloat(magnitude) <= parseFloat(3)) {
     return colors[2];
-  } else if (parseFloat(magnitude) <= parseFloat(4)) {
+  } else if (parseFloat(magnitude) > parseFloat(3) && parseFloat(magnitude) <= parseFloat(4)) {
     return colors[3];
-  } else if (parseFloat(magnitude) <= parseFloat(5)) {
+  } else if (parseFloat(magnitude) > parseFloat(4) && parseFloat(magnitude) <= parseFloat(5)) {
     return colors[4];
   } else {
     return colors[5];
@@ -38,7 +38,7 @@ function displayMarkers(response) {
   var features = response.features;
     for (var i = 0; i < features.length; i++) {
       var location = features[i].geometry.coordinates;
-      console.log("Location co-ords ", location, features[i].properties.mag, features[i].properties.place);
+      //console.log("Location co-ords ", location, features[i].properties.mag, features[i].properties.place);
       L.circle([location[1], location[0]], {
         fillOpacity: 0.75,
         color: "black",
